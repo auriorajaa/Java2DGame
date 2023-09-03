@@ -24,10 +24,6 @@ To run this game on your local machine, you will need:
 
 5. **Run the Game**: Run the game's main class to start the game. Please note that since this is a work in progress, there may be incomplete or buggy features.
 
-## Contributing
-
-If you're interested in contributing to this project, feel free to fork this repository and create a pull request with your changes. However, please keep in mind that this is primarily a learning project for me, so contributions are not a top priority.
-
 ## Issues and Feedback
 
 If you encounter any issues while running the game or have suggestions for improvement, please open an issue on this repository. Your feedback is valuable, and it may help me enhance the project.
