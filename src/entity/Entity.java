@@ -45,7 +45,6 @@ public class Entity {
     int hpBarCounter = 0;
 
     // CHARACTER ATTRIBUTES
-    public int type;
     public String name;
     public int speed;
     public int maxLife;
@@ -65,6 +64,16 @@ public class Entity {
     public int attackValue;
     public int defenseValue;
     public String description = "";
+
+    // TYPE
+    public int type;
+    public final int type_player = 0;
+    public final int type_npc = 1;
+    public final int type_monster = 2;
+    public final int type_sword = 3;
+    public final int type_axe = 4;
+    public final int type_shield = 5;
+    public final int type_consumable = 6;
 
     public Entity(GamePanel gp) {
         this.gp = gp;

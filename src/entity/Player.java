@@ -36,9 +36,6 @@ public class Player extends Entity {
         solidArea.width = 24;
         solidArea.height = 30;
 
-        attackArea.width = 36;
-        attackArea.height = 36;
-
         setDefaultValues();
         getPlayerImage();
         getPlayerAttackImage();
@@ -73,6 +70,8 @@ public class Player extends Entity {
     }
 
     public int getAttack() {
+        attackArea = currentWeapon.attackArea;
+
         return attack = strength * currentWeapon.attackValue;
     }
 
@@ -239,7 +238,17 @@ public class Player extends Entity {
 
     public void pickUpObject(int i) {
         if (i != 999) {
+            String text;
 
+            if (inventory.size() != maxInventorySize) {
+                inventory.add(gp.obj[i]);
+                gp.playSE(1);
+                text = "You got a " + gp.obj[i].name + "!";
+            } else {
+                text = "You cannot carry any more";
+            }
+            gp.ui.addMessage(text);
+            gp.obj[i] = null;
         }
     }
 
