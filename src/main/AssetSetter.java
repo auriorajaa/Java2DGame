@@ -5,6 +5,7 @@ import monster.MON_GreenSlime;
 import object.OBJ_Axe;
 import object.OBJ_Door;
 import object.OBJ_Key;
+import object.OBJ_Shield_Blue;
 
 public class AssetSetter {
 
@@ -33,6 +34,11 @@ public class AssetSetter {
 
         gp.obj[i] = new OBJ_Axe(gp);
         gp.obj[i].worldX = gp.tileSize * 33;
+        gp.obj[i].worldY = gp.tileSize * 21;
+        i++;
+
+        gp.obj[i] = new OBJ_Shield_Blue(gp);
+        gp.obj[i].worldX = gp.tileSize * 37;
         gp.obj[i].worldY = gp.tileSize * 21;
         i++;
     }
