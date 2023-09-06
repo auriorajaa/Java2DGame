@@ -289,7 +289,6 @@ public class Entity {
         }
 
         if (dyingCounter > i * 8) {
-            dying = false;
             alive = false;
         }
     }
