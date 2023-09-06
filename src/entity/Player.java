@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import main.GamePanel;
 import main.KeyHandler;
+import object.OBJ_Fireball;
 import object.OBJ_Key;
 import object.OBJ_Shield_Wood;
 import object.OBJ_Sword_Normal;
@@ -59,6 +60,7 @@ public class Player extends Entity {
         coin = 0;
         currentWeapon = new OBJ_Sword_Normal(gp);
         currentShield = new OBJ_Shield_Wood(gp);
+        projectile = new OBJ_Fireball(gp);
         attack = getAttack();
         defense = getDefense();
     }
@@ -186,6 +188,13 @@ public class Player extends Entity {
                 }
                 spriteCounter = 0;
             }
+        }
+
+        if (gp.keyH.shotKeyPressed == true && projectile.alive == false) {
+            projectile.set(worldX, worldY, direction, true, this);
+
+            gp.projectileList.add(projectile);
+            gp.playSE(10);
         }
 
         if (invincible == true) {
