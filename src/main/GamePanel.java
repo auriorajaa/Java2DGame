@@ -81,6 +81,7 @@ public class GamePanel extends JPanel implements Runnable {
         aSetter.setObject();
         aSetter.setNPC();
         aSetter.setMonster();
+        aSetter.setInteractiveTile();
         // playMusic(0);
 
         gameState = titleState;
@@ -160,11 +161,11 @@ public class GamePanel extends JPanel implements Runnable {
                     }
                 }
             }
-        }
 
-        for (int i = 0; i < iTile.length; i++) {
-            if (iTile[i] != null) {
-                iTile[i].update();
+            for (int i = 0; i < iTile.length; i++) {
+                if (iTile[i] != null) {
+                    iTile[i].update();
+                }
             }
         }
 
