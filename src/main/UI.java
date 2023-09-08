@@ -488,7 +488,7 @@ public class UI {
 
         switch (subState) {
             case 0:
-            options_top(frameX, frameY);
+                options_top(frameX, frameY);
                 break;
             case 1:
 
@@ -508,6 +508,31 @@ public class UI {
         textX = getXforCenteredText(text);
         textY = frameY + gp.tileSize;
         g2.drawString(text, textX, textY);
+
+        // FULL SCREEN ON/OFF
+        textX = frameX + gp.tileSize;
+        textY += gp.tileSize * 2;
+        g2.drawString("Full Screen", textX, textY);
+
+        // MUSIC
+        textY += gp.tileSize;
+        g2.drawString("Music", textX, textY);
+
+        // SOUND EFFECT
+        textY += gp.tileSize;
+        g2.drawString("SE", textX, textY);
+
+        // CONTROL
+        textY += gp.tileSize;
+        g2.drawString("Control", textX, textY);
+
+        // END GAME
+        textY += gp.tileSize;
+        g2.drawString("End Game", textX, textY);
+
+        // BACK
+        textY += gp.tileSize * 2;
+        g2.drawString("Back", textX, textY);
     }
 
     public int getItemIndexOnSlot() {
