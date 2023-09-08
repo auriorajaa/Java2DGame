@@ -28,6 +28,7 @@ public class UI {
     public int titleScreenState = 0;
     public int slotCol = 0;
     public int slotRow = 0;
+    int subState = 0;
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -91,6 +92,11 @@ public class UI {
         if (gp.gameState == gp.characterState) {
             drawCharacterScreen();
             drawInventory();
+        }
+
+        // OPTION STATE
+        if (gp.gameState == gp.optionState) {
+            drawOptionScreen();
         }
     }
 
@@ -467,6 +473,41 @@ public class UI {
                 textY += 32;
             }
         }
+    }
+
+    public void drawOptionScreen() {
+        g2.setColor(Color.white);
+        g2.setFont(g2.getFont().deriveFont(32f));
+
+        // SUB WINDOW
+        int frameX = gp.tileSize * 6;
+        int frameY = gp.tileSize;
+        int frameWidth = gp.tileSize * 8;
+        int frameHeight = gp.tileSize * 10;
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+
+        switch (subState) {
+            case 0:
+            options_top(frameX, frameY);
+                break;
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+        }
+    }
+
+    public void options_top(int frameX, int frameY) {
+        int textX;
+        int textY;
+
+        // TITLE
+        String text = "Options";
+        textX = getXforCenteredText(text);
+        textY = frameY + gp.tileSize;
+        g2.drawString(text, textX, textY);
     }
 
     public int getItemIndexOnSlot() {
