@@ -513,26 +513,44 @@ public class UI {
         textX = frameX + gp.tileSize;
         textY += gp.tileSize * 2;
         g2.drawString("Full Screen", textX, textY);
+        if (commandNum == 0) {
+            g2.drawString(">", textX - 25, textY);
+        }
 
         // MUSIC
         textY += gp.tileSize;
         g2.drawString("Music", textX, textY);
+        if (commandNum == 1) {
+            g2.drawString(">", textX - 25, textY);
+        }
 
         // SOUND EFFECT
         textY += gp.tileSize;
         g2.drawString("SE", textX, textY);
+        if (commandNum == 2) {
+            g2.drawString(">", textX - 25, textY);
+        }
 
         // CONTROL
         textY += gp.tileSize;
         g2.drawString("Control", textX, textY);
+        if (commandNum == 3) {
+            g2.drawString(">", textX - 25, textY);
+        }
 
         // END GAME
         textY += gp.tileSize;
         g2.drawString("End Game", textX, textY);
+        if (commandNum == 4) {
+            g2.drawString(">", textX - 25, textY);
+        }
 
         // BACK
         textY += gp.tileSize * 2;
         g2.drawString("Back", textX, textY);
+        if (commandNum == 5) {
+            g2.drawString(">", textX - 25, textY);
+        }
     }
 
     public int getItemIndexOnSlot() {
