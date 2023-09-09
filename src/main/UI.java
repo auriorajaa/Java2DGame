@@ -491,12 +491,14 @@ public class UI {
                 options_top(frameX, frameY);
                 break;
             case 1:
-
+                options_fullScreenNotification(frameX, frameY);
                 break;
             case 2:
 
                 break;
         }
+
+        gp.keyH.enterPressed = false;
     }
 
     public void options_top(int frameX, int frameY) {
@@ -515,6 +517,15 @@ public class UI {
         g2.drawString("Full Screen", textX, textY);
         if (commandNum == 0) {
             g2.drawString(">", textX - 25, textY);
+
+            if (gp.keyH.enterPressed == true) {
+                if (gp.fullScreenOn == false) {
+                    gp.fullScreenOn = true;
+                } else if (gp.fullScreenOn = true) {
+                    gp.fullScreenOn = false;
+                }
+                subState = 1;
+            }
         }
 
         // MUSIC
@@ -550,6 +561,48 @@ public class UI {
         g2.drawString("Back", textX, textY);
         if (commandNum == 5) {
             g2.drawString(">", textX - 25, textY);
+        }
+
+        // FULL SCREEN CHECK BOX
+        textX = frameX + (int) (gp.tileSize * 4.5);
+        textY = frameY + gp.tileSize * 2 + 24;
+        g2.setStroke(new BasicStroke(3));
+        g2.drawRect(textX, textY, 24, 24);
+
+        if (gp.fullScreenOn == true) {
+            g2.fillRect(textX, textY, 24, 24);
+        }
+
+        // MUSIC VOLUME BOX
+        textY += gp.tileSize;
+        g2.drawRect(textX, textY, 120, 24);
+
+        // SOUND EFFECT VOLUME BOX
+        textY += gp.tileSize;
+        g2.drawRect(textX, textY, 120, 24);
+    }
+
+    public void options_fullScreenNotification(int frameX, int frameY) {
+        int textX = frameX + gp.tileSize;
+        int textY = frameY + gp.tileSize * 3;
+
+        currentDialogue = "The change will take \neffect after restarting \nthe game.";
+
+        for (String line : currentDialogue.split("\n")) {
+            g2.drawString(line, textX, textY);
+            textY += 40;
+        }
+
+        // BACK OPTION
+        textY = frameY + gp.tileSize * 9;
+        g2.drawString("Back", textX, textY);
+
+        if (commandNum == 0) {
+            g2.drawString(">", textX - 25, textY);
+
+            if (gp.keyH.enterPressed == true) {
+                subState = 0;
+            }
         }
     }
 
