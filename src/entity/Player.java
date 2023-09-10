@@ -225,6 +225,10 @@ public class Player extends Entity {
         if (mana > maxMana) {
             mana = maxMana;
         }
+
+        if (life <= 0) {
+            gp.gameState = gp.gameOverState;
+        }
     }
 
     public void attacking() {
