@@ -500,6 +500,27 @@ public class UI {
         // MAIN TEXT
         g2.setColor(Color.white);
         g2.drawString(text, x - 4, y - 4);
+
+        // RETRY
+        g2.setFont(g2.getFont().deriveFont(50f));
+        text = "Retry";
+        x = getXforCenteredText(text);
+        y += gp.tileSize * 4;
+        g2.drawString(text, x, y);
+
+        if (commandNum == 0) {
+            g2.drawString(">", x - 40, y);
+        }
+
+        // QUIT
+        text = "Quit";
+        x = getXforCenteredText(text);
+        y += 55;
+        g2.drawString(text, x, y);
+
+        if (commandNum == 1) {
+            g2.drawString(">", x - 40, y);
+        }
     }
 
     public void drawOptionScreen() {
