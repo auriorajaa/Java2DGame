@@ -30,6 +30,7 @@ public class UI {
     public int slotRow = 0;
     int subState = 0;
     int counter = 0;
+    public Entity npc;
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -108,6 +109,11 @@ public class UI {
         // TRANSITION STATE
         if (gp.gameState == gp.transitionState) {
             drawTransition();
+        }
+
+        // TRADE STATE
+        if (gp.gameState == gp.tradeState) {
+            drawTradeScreen();
         }
     }
 
@@ -299,9 +305,9 @@ public class UI {
 
     public void drawDialogueScreen() {
         // WINDOW
-        int x = gp.tileSize * 2;
+        int x = gp.tileSize * 3;
         int y = gp.tileSize / 2;
-        int width = gp.screenWidth - (gp.tileSize * 4);
+        int width = gp.screenWidth - (gp.tileSize * 6);
         int height = gp.tileSize * 4;
 
         drawSubWindow(x, y, width, height);
@@ -800,6 +806,81 @@ public class UI {
             gp.eHandler.previousEventX = gp.player.worldX;
             gp.eHandler.previousEventY = gp.player.worldY;
         }
+    }
+
+    public void drawTradeScreen() {
+        switch (subState) {
+            case 0:
+                trade_select();
+                break;
+            case 1:
+                trade_buy();
+                break;
+            case 2:
+                trade_sell();
+                break;
+        }
+
+        gp.keyH.enterPressed = false;
+    }
+
+    public void trade_select() {
+        drawDialogueScreen();
+
+        // DRAW WINDOW
+        int x = gp.tileSize * 15;
+        int y = gp.tileSize * 4;
+        int width = gp.tileSize * 3;
+        int height = (int) (gp.tileSize * 3.5);
+
+        drawSubWindow(x, y, width, height);
+
+        // DRAW TEXTS
+        x += gp.tileSize;
+        y += gp.tileSize;
+        g2.drawString("Buy", x, y);
+
+        if (commandNum == 0) {
+            g2.drawString(">", x - 24, y);
+
+            if (gp.keyH.enterPressed == true) {
+                subState = 1;
+            }
+        }
+
+        y += gp.tileSize;
+
+        g2.drawString("Sell", x, y);
+
+        if (commandNum == 1) {
+            g2.drawString(">", x - 24, y);
+
+            if (gp.keyH.enterPressed == true) {
+                subState = 2;
+            }
+        }
+
+        y += gp.tileSize;
+
+        g2.drawString("Leave", x, y);
+
+        if (commandNum == 2) {
+            g2.drawString(">", x - 24, y);
+
+            if (gp.keyH.enterPressed == true) {
+                commandNum = 0;
+                gp.gameState = gp.dialogueState;
+                currentDialogue = "Come again, hehe!";
+            }
+        }
+    }
+
+    public void trade_buy() {
+
+    }
+
+    public void trade_sell() {
+
     }
 
     public int getItemIndexOnSlot() {
