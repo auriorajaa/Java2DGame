@@ -311,6 +311,16 @@ public class KeyHandler implements KeyListener {
 
             gp.playSE(9);
         }
+
+        if (code == KeyEvent.VK_ENTER) {
+            if (gp.ui.commandNum == 0) {
+                gp.gameState = gp.playState;
+                gp.retry();
+            } else if (gp.ui.commandNum == 1) {
+                gp.gameState = gp.titleState;
+                gp.restart();
+            }
+        }
     }
 
     @Override
