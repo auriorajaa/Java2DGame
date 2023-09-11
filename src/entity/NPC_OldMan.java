@@ -6,7 +6,7 @@ import java.util.Random;
 import main.GamePanel;
 
 public class NPC_OldMan extends Entity {
-    
+
     public NPC_OldMan(GamePanel gp) {
         super(gp);
 
@@ -44,30 +44,41 @@ public class NPC_OldMan extends Entity {
     }
 
     public void setAction() {
-        actionLockCounter++;
 
-        if (actionLockCounter == 120) {
-            Random random = new Random();
-            int i = random.nextInt(100) + 1;
+        if (onPath == true) {
+            int goalCol = 12;
+            int goalRow =  9;
 
-            if (i <= 25) {
-                direction = "up";
-            }
-            if (i > 25 && i <= 50) {
-                direction = "down";
-            }
-            if (i > 50 && i <= 75) {
-                direction = "left";
-            }
-            if (i > 75 && i <= 100) {
-                direction = "right";
-            }
+            searchPath(goalCol, goalRow);
+        } else {
 
-            actionLockCounter = 0;
+            actionLockCounter++;
+
+            if (actionLockCounter == 120) {
+                Random random = new Random();
+                int i = random.nextInt(100) + 1;
+
+                if (i <= 25) {
+                    direction = "up";
+                }
+                if (i > 25 && i <= 50) {
+                    direction = "down";
+                }
+                if (i > 50 && i <= 75) {
+                    direction = "left";
+                }
+                if (i > 75 && i <= 100) {
+                    direction = "right";
+                }
+
+                actionLockCounter = 0;
+            }
         }
     }
 
     public void speak() {
         super.speak();
+
+        onPath = true;
     }
 }
