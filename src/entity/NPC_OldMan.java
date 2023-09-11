@@ -46,8 +46,10 @@ public class NPC_OldMan extends Entity {
     public void setAction() {
 
         if (onPath == true) {
-            int goalCol = 12;
-            int goalRow =  9;
+            // int goalCol = 12;
+            // int goalRow =  9;
+            int goalCol = (gp.player.worldX + gp.player.solidArea.x) / gp.tileSize;
+            int goalRow = (gp.player.worldY + gp.player.solidArea.y) / gp.tileSize;
 
             searchPath(goalCol, goalRow);
         } else {
