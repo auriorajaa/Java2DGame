@@ -215,7 +215,16 @@ public class Player extends Entity {
 
             projectile.subtractResource(this);
 
-            gp.projectileList.add(projectile);
+            // gp.projectileList.add(projectile);
+
+            // CHECK VACANCY
+            for (int i = 0; i < gp.projectile[1].length; i++) {
+                if (gp.projectile[gp.currentMap][i] == null) {
+                    gp.projectile[gp.currentMap][i] = projectile;
+                    break;
+                }
+            }
+
             shotAvailableCounter = 0;
             gp.playSE(10);
         }
@@ -289,6 +298,9 @@ public class Player extends Entity {
 
             int iTileIndex = gp.cChecker.checkEntity(this, gp.iTile);
             damageInteractiveTile(iTileIndex);
+
+            int projectileIndex = gp.cChecker.checkEntity(this, gp.projectile);
+            damageProjectile(projectileIndex);
 
             // RESTORE THE ORIGINAL DATA
             worldX = currentworldX;
@@ -392,6 +404,14 @@ public class Player extends Entity {
             if (gp.iTile[gp.currentMap][i].life == 0) {
                 gp.iTile[gp.currentMap][i] = gp.iTile[gp.currentMap][i].getDestroyedForm();
             }
+        }
+    }
+
+    public void damageProjectile(int i) {
+        if (i != 999) {
+            Entity projectile = gp.projectile[gp.currentMap][i];
+            projectile.alive = false;
+            generateParticle(projectile, projectile);
         }
     }
 
